@@ -7,8 +7,125 @@
     <title> Ta Tien </title>
 </head>
 <body>
-    <p class="test"> Hello world </p>
-    <p> abc </p>
+        <script>
+                // const clickme = function() {
+                //   console.log("ok");
+                // };
+            </script>
+            <div class="jumbotron text-center">
+                <h1> Ban hang ngon bo re </h1>
+                <p>Mua thoa thich </p>
+            </div>
+            <nav class="navbar navbar-expand-sm bg-primary navbar-dark mr-auto">
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">Logo</a>
+        
+                <!-- Links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link 2</a>
+                    </li>
+        
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Sort
+                        </a>
+                        <div class="dropdown mr-auto">
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item" id="sortNumDesc" href="#"> price low-high</button>
+                                <button class="dropdown-item" id="sortNumAsc" href="#">price high-low</button>
+                                <button class="dropdown-item" id="sortTextDesc" href="#">name A-Z</button>
+                                <button class="dropdown-item" id="sortTextAsc" href="#">name Z-A</button>
+                                <button class="dropdown-item" id="findBigSale" href="#">Big Sale</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <form id="search" class=" form-inline ml-auto" action="/action_page.php">
+                    <input id="searchInput" class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-success " type="submit">Search</button>
+                </form>
+            </nav>
+        
+            <table id="simple" border="1">
+                <tr class="table-primary" id="title">
+                    <th>So Thu Tu</th>
+                    <th>hinh anh</th>
+                    <th>Ten San Pham</th>
+                    <th>Gia tien (VND)</th>
+                    <th>Gia khuyen mai (VND)</th>
+                    <th>Giam gia (%)</th>
+                    <th>Chi tiet</th>
+                </tr>
+            </table>
+            <p id="notfound" style="display:none "> Not found items</p>
+            <!-- <div id="showInfo">
+            </div> -->
+            <!-- <br>
+            <button id="sortNumDesc"> sort price low-high</button>
+            <button id="sortNumAsc"> sort price high-low</button>
+            <br>
+            <button id="sortTextDesc"> sort product-name A-Z</button>
+            <button id="sortTextAsc"> sort product-name Z-A</button>
+            <br>
+            <button id="findBigSale"> big sale</button> -->
+        
+            <script src="./src/index.js"></script>
+            <script>
+                const showDetailProduct = id => {
+          $.ajax({
+            url: ` https://mapi.sendo.vn/mob/product/${id}/detail/ `,
+            method: "GET"
+          })
+            .done(result => {
+              $("tr")
+                .not("tr#titleBottom")
+                .remove();
+              $("table#list").append(
+                `<thead>
+                             <tr id="title">
+                                     <th>Mô tả sản phẩm</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>${result.description}</td> 
+                            </tr>
+                        `
+              );
+              $("table#list2").append(
+                `
+                            <tr>
+                                <th scope="row">SKU sản phẩm</th>
+                                <td>${result.sku}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Giá</th>
+                                <td>${result.price}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Giá khuyến mãi</th>
+                                <td>${result.final_price.toLocaleString()}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">% Khuyến mãi</th>
+                                <td>${result.promotion_percent.toLocaleString()}</td>
+                            </tr>					
+                            <tr>
+                                <th scope="row">Tình trạng</th>
+                                <td>${result.status_text}</td>
+                            </tr>
+                `
+              );
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        };
+            </script>
     <script src="index.js"></script>
 </body>
 </html>
