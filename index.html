@@ -1,71 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Ta Tien </title>
-</head>
-<body>
-        <script>
-                // const clickme = function() {
-                //   console.log("ok");
-                // };
-            </script>
-            <div class="jumbotron text-center">
-                <h1> Ban hang ngon bo re </h1>
-                <p>Mua thoa thich </p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="/index.js"></script>
+    <title>Ta Tien</title>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <script>
+      // const clickme = function() {
+      //   console.log("ok");
+      // };
+    </script>
+    <div class="jumbotron text-center">
+      <h1>Ban hang ngon bo re</h1>
+      <p>Mua thoa thich</p>
+    </div>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark mr-auto">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">Logo</a>
+
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link 1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link 2</a>
+        </li>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbardrop"
+            data-toggle="dropdown"
+          >
+            Sort
+          </a>
+          <div class="dropdown mr-auto">
+            <div class="dropdown-menu">
+              <button class="dropdown-item" id="sortNumDesc" href="#">
+                price low-high
+              </button>
+              <button class="dropdown-item" id="sortNumAsc" href="#">
+                price high-low
+              </button>
+              <button class="dropdown-item" id="sortTextDesc" href="#">
+                name A-Z
+              </button>
+              <button class="dropdown-item" id="sortTextAsc" href="#">
+                name Z-A
+              </button>
+              <button class="dropdown-item" id="findBigSale" href="#">
+                Big Sale
+              </button>
             </div>
-            <nav class="navbar navbar-expand-sm bg-primary navbar-dark mr-auto">
-                <!-- Brand -->
-                <a class="navbar-brand" href="#">Logo</a>
-        
-                <!-- Links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link 1</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link 2</a>
-                    </li>
-        
-                    <!-- Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Sort
-                        </a>
-                        <div class="dropdown mr-auto">
-                            <div class="dropdown-menu">
-                                <button class="dropdown-item" id="sortNumDesc" href="#"> price low-high</button>
-                                <button class="dropdown-item" id="sortNumAsc" href="#">price high-low</button>
-                                <button class="dropdown-item" id="sortTextDesc" href="#">name A-Z</button>
-                                <button class="dropdown-item" id="sortTextAsc" href="#">name Z-A</button>
-                                <button class="dropdown-item" id="findBigSale" href="#">Big Sale</button>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <form id="search" class=" form-inline ml-auto" action="/action_page.php">
-                    <input id="searchInput" class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-success " type="submit">Search</button>
-                </form>
-            </nav>
-        
-            <table id="simple" border="1">
-                <tr class="table-primary" id="title">
-                    <th>So Thu Tu</th>
-                    <th>hinh anh</th>
-                    <th>Ten San Pham</th>
-                    <th>Gia tien (VND)</th>
-                    <th>Gia khuyen mai (VND)</th>
-                    <th>Giam gia (%)</th>
-                    <th>Chi tiet</th>
-                </tr>
-            </table>
-            <p id="notfound" style="display:none "> Not found items</p>
-            <!-- <div id="showInfo">
+          </div>
+        </li>
+      </ul>
+      <form id="search" class=" form-inline ml-auto" action="/action_page.php">
+        <input
+          id="searchInput"
+          class="form-control mr-sm-2"
+          type="text"
+          placeholder="Search"
+        />
+        <button class="btn btn-success " type="submit">Search</button>
+      </form>
+    </nav>
+
+    <table id="simple">
+      <tr class="table-primary" id="title">
+        <th>So Thu Tu</th>
+        <th>hinh anh</th>
+        <th>Ten San Pham</th>
+        <th>Gia tien (VND)</th>
+        <th>Gia khuyen mai (VND)</th>
+        <th>Giam gia (%)</th>
+        <th>Chi tiet</th>
+      </tr>
+    </table>
+
+    <p id="notfound" style="display:none ">Not found items</p>
+    <!-- <div id="showInfo">
             </div> -->
-            <!-- <br>
+    <!-- <br>
             <button id="sortNumDesc"> sort price low-high</button>
             <button id="sortNumAsc"> sort price high-low</button>
             <br>
@@ -73,8 +110,8 @@
             <button id="sortTextAsc"> sort product-name Z-A</button>
             <br>
             <button id="findBigSale"> big sale</button> -->
-        
-            <script src="./src/index.js"></script>
+
+    <script src="/index.js"></script>
             <script>
                 const showDetailProduct = id => {
           $.ajax({
@@ -126,6 +163,6 @@
             });
         };
             </script>
-    <script src="index.js"></script>
-</body>
+    
+  </body>
 </html>
